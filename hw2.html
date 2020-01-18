@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        Задание:
+        <br />
+        Создайте в шаблоне массив объектов, содержащий название, подсказку и
+        ссылку. Необходимо создать список ссылок, где вначале будет определяться
+        номер ссылки, название. При нажатии – переходит по ссылке. При наведении
+        – появляется всплывающая подсказка.
+      </p>
+      <hr />
+      <div id="app">
+        <p v-for="(iter, index) in lists">
+          {{index+1}}.
+          <a v-bind:href="iter.link" v-bind:title="iter.desr" target="_blank"
+            >{{iter.name}}</a
+          >
+        </p>
+      </div>
+    </div>
+    <script>
+      let sample = new Vue({
+        el: '#app',
+        data: {
+          lists: [
+            {
+              name: 'Vue.js',
+              desr: 'Vue',
+              link: 'http://ru.vuejs.org/'
+            },
+            {
+              name: 'React',
+              desr: 'React',
+              link: 'http://facebook.github.io/react-native/'
+            },
+            {
+              name: 'Angular',
+              desr: 'Angular',
+              link: 'http://angular.io/'
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>

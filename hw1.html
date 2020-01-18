@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="css/bootstrap.min.css" rel="stylesheet"  />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body >
+    <div class="container">
+    <p>
+      Задание:
+      <br>
+      Реализуйте форму, в которой пользователь может выбрать цвет и ввести текст. При нажатии на кнопку подтверждения на странице отображается текст выбранным цветом. Список цветов создайте с помощью массива.
+    </p>
+    <hr>
+    <div id="app">
+      <form class="form-horizontal" >
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Выберите цвет</label>
+              <select v-model="userColor" class="form-control" id="exampleFormControlSelect1">
+                <option v-for="curent in setColor">{{curent}}</option>
+              </select>
+             <br>
+          <div class="input-group">
+            
+            <input
+              v-model="userText"
+              type="text"
+              class="form-control"
+              placeholder="Введите текст"
+            />
+            <button v-on:click="onSearch" type="button" class="btn btn-primary" >
+              Вывести текст
+            </button>
+            <br>
+            
+          </div>
+        </div>
+      </form>
+      <p :style="{color: textColor}"> {{documentText}} </p> 
+    </div>
+  </div>
+    <script>
+      let sample = new Vue({
+        el: '#app',
+        data: {
+          setColor: ['red', 'blue', 'green', 'yellow', 'purple'],
+          userColor: '',
+          textColor: '',
+          userText:'',
+          documentText:''
+          
+               
+        },
+
+        methods: {
+          onSearch: function() {
+            this.textColor = this.userColor;
+            this.documentText = this.userText;
+                        
+          }
+        }
+      });
+    </script>
+  </body v-bind:style="{color:textColor}">
+</html>
